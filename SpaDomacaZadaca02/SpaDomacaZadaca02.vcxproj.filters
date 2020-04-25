@@ -46,16 +46,6 @@
     <None Include="openal32.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="resources\ricky\ricky.wav">
-      <Filter>Resource Files\ricky</Filter>
-    </Media>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="resources\filenames.txt">
-      <Filter>Resource Files\ricky</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="resources\ricky\frames\0.png">
       <Filter>Resource Files\ricky\frames</Filter>
     </Image>
@@ -3239,5 +3229,15 @@
     <Image Include="resources\ricky\frames\1060.png">
       <Filter>Resource Files\ricky\frames</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\ricky\filenames.txt">
+      <Filter>Resource Files\ricky</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\ricky\ricky.wav">
+      <Filter>Resource Files\ricky</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -138,12 +138,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="resources\filenames.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="resources\ricky\ricky.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="resources\ricky\frames\0.png" />
     <Image Include="resources\ricky\frames\1.png" />
     <Image Include="resources\ricky\frames\10.png" />
@@ -1205,6 +1199,12 @@
     <Image Include="resources\ricky\frames\997.png" />
     <Image Include="resources\ricky\frames\998.png" />
     <Image Include="resources\ricky\frames\999.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\ricky\filenames.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\ricky\ricky.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
