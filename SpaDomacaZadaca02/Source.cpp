@@ -9,7 +9,7 @@ int main() {
 	   
 	int input;
 	do {
-		std::cout << "Welcome, please choose a display mode:\n  1) Heatmap -- chooses pixel color based on number of neighbors\n  2) Grouping -- does its best to give neighboring pixels the same color\n  3) Special Mode\n  4) White Grid -- white on black\n  ", std::cin >> input;
+		std::cout << "Welcome, please choose a display mode:\n  1) Heatmap -- chooses pixel color based on number of neighbors\n  2) Grouping -- gives neighboring pixels the same color (per frame)\n  3) Special Mode\n  4) White Grid -- white on black\n  ", std::cin >> input;
 		if (input < 1 || input > 4) input = 0;
 	} while (!input);
 	

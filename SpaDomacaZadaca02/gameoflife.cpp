@@ -68,7 +68,7 @@ std::vector<std::vector<std::array<int, 2>>> gameoflife::groups()
 				std::array<int, 2> coords = { i, j };
 				checkedField[i][j] = true;
 				group.push_back(coords);
-				recursiveCheck(coords, 0);
+				recursiveCheck(coords);
 				result.push_back(group);
 				group.clear();
 			}
@@ -93,7 +93,7 @@ bool gameoflife::random(float percentage) {
 	return false;
 }
 
-void gameoflife::recursiveCheck(std::array<int, 2> prevcoords, int direction) {
+void gameoflife::recursiveCheck(std::array<int, 2> prevcoords) {
 	bool north;
 	bool northeast;
 	bool east;
@@ -106,90 +106,90 @@ void gameoflife::recursiveCheck(std::array<int, 2> prevcoords, int direction) {
 	int x = prevcoords[0];
 	int y = prevcoords[1];
 
-	if ((y - 1) >= 0 && direction != 5) {
+	if ((y - 1) >= 0) {
 		north = field[x][y - 1];
 		if (north && !checkedField[x][y - 1]) {
 			checkedField[x][y - 1] = true;
 			std::array<int, 2> coords = { x, y - 1 };
 			group.push_back(coords);
-			recursiveCheck(coords, 3);
+			recursiveCheck(coords);
 		}
 	}
 	else { north = false; }
 
-	if ((y - 1) >= 0 && (x + 1) < size[0] && direction != 6) {
+	if ((y - 1) >= 0 && (x + 1) < size[0]) {
 		northeast = field[x + 1][y - 1];
 		if (northeast && !checkedField[x + 1][y - 1]) {
 			checkedField[x + 1][y - 1] = true;
 			std::array<int, 2> coords = { x + 1, y - 1 };
 			group.push_back(coords);
-			recursiveCheck(coords, 3);
+			recursiveCheck(coords);
 		}
 	}
 	else { northeast = false; }
 
-	if ((x + 1) < size[0] && direction != 7) {
+	if ((x + 1) < size[0]) {
 		east = field[x + 1][y];
 		if (east && !checkedField[x + 1][y]) {
 			checkedField[x + 1][y] = true;
 			std::array<int, 2> coords = { x + 1, y };
 			group.push_back(coords);
-			recursiveCheck(coords, 4);
+			recursiveCheck(coords);
 		}
 	}
 	else { east = false; }
 
-	if ((y + 1) < size[1] && (x + 1) < size[0] && direction != 8) {
+	if ((y + 1) < size[1] && (x + 1) < size[0]) {
 		southeast = field[x + 1][y + 1];
 		if (southeast && !checkedField[x + 1][y + 1]) {
 			checkedField[x + 1][y + 1] = true;
 			std::array<int, 2> coords = { x + 1, y + 1 };
 			group.push_back(coords);
-			recursiveCheck(coords, 4);
+			recursiveCheck(coords);
 		}
 	}
 	else { southeast = false; }
 
-	if ((y + 1) < size[1] && direction != 1) {
+	if ((y + 1) < size[1]) {
 		south = field[x][y + 1];
 		if (south && !checkedField[x][y + 1]) {
 			checkedField[x][y + 1] = true;
 			std::array<int, 2> coords = { x, y + 1 };
 			group.push_back(coords);
-			recursiveCheck(coords, 1);
+			recursiveCheck(coords);
 		}
 	}
 	else { south = false; }
 
-	if ((y + 1) < size[1] && (x - 1) >= 0 && direction != 2) {
+	if ((y + 1) < size[1] && (x - 1) >= 0) {
 		southwest = field[x - 1][y + 1];
 		if (southwest && !checkedField[x - 1][y + 1]) {
 			checkedField[x - 1][y + 1] = true;
 			std::array<int, 2> coords = { x - 1, y + 1 };
 			group.push_back(coords);
-			recursiveCheck(coords, 1);
+			recursiveCheck(coords);
 		}
 	}
 	else { southwest = false; }
 
-	if ((x - 1) >= 0 && direction != 3) {
+	if ((x - 1) >= 0) {
 		west = field[x - 1][y];
 		if (west && !checkedField[x - 1][y]) {
 			checkedField[x - 1][y] = true;
 			std::array<int, 2> coords = { x - 1, y };
 			group.push_back(coords);
-			recursiveCheck(coords, 2);
+			recursiveCheck(coords);
 		}
 	}
 	else { west = false; }
 
-	if ((y - 1) >= 0 && (x - 1) >= 0 && direction != 4) {
+	if ((y - 1) >= 0 && (x - 1) >= 0) {
 		northwest = field[x - 1][y - 1];
 		if (northwest && !checkedField[x - 1][y - 1]) {
 			checkedField[x - 1][y - 1] = true;
 			std::array<int, 2> coords = { x - 1, y - 1 };
 			group.push_back(coords);
-			recursiveCheck(coords, 2);
+			recursiveCheck(coords);
 		}
 	}
 	else { northwest = false; }

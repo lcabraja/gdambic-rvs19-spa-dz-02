@@ -13,7 +13,7 @@ class gameoflife {
 	// ~~~ brb = bad recursion, brb
 	std::vector<std::vector<std::array<int, 2>>> result;
 	std::vector<std::array<int, 2>> group;
-	void recursiveCheck(std::array<int, 2> coords, int direction);
+	void recursiveCheck(std::array<int, 2> coords);
 	void resetCheckField();
 public:
 	gameoflife(std::array<int, 2> size);
