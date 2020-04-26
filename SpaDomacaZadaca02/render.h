@@ -8,7 +8,8 @@
 class render {
 	// ~~~ Constants
 	float defaultfieldsize = 10.f;
-	sf::Color gradient[8] = {
+	sf::Color gradient[9] = {
+		sf::Color(9, 6, 146, 255),
 		sf::Color(14, 9, 201, 255),
 		sf::Color(25, 229, 236, 255),
 		sf::Color(25, 236, 114, 255),

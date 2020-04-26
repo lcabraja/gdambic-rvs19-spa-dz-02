@@ -6,8 +6,6 @@
 int main() {
 	databomb data;
 	sf::Clock clock;
-	sf::RenderWindow window(sf::VideoMode(1000, 1000), "Gle ti to sunce je izaslo...");
-	window.setFramerateLimit(60);
 	   
 	int input;
 	do {
@@ -27,6 +25,9 @@ int main() {
 		}
 	} while (!input);
 	*/
+
+	sf::RenderWindow window(sf::VideoMode(1000, 1000), "Gle ti to sunce je izaslo...");
+	window.setFramerateLimit(60);
 
 	data.window = &window;
 	data.clock = &clock;

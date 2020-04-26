@@ -94,7 +94,7 @@ void render::updateFields() {
 				if (fieldValues[i][j]) {
 					if (mode == 1) {
 						std::array<int, 2> coords = { i, j };
-						field[i][j].setFillColor(gradient[g->countNeighbours(coords) - 1]);
+						field[i][j].setFillColor(gradient[g->countNeighbours(coords)]);
 					} else {
 						field[i][j].setFillColor(sf::Color().White);
 					}
