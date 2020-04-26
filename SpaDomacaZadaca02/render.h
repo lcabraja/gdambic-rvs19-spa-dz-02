@@ -8,12 +8,22 @@
 class render {
 	// ~~~ Constants
 	float defaultfieldsize = 10.f;
+	sf::Color gradient[8] = {
+		sf::Color(14, 9, 201, 255),
+		sf::Color(25, 229, 236, 255),
+		sf::Color(25, 236, 114, 255),
+		sf::Color(114, 236, 25, 255),
+		sf::Color(236, 204, 25, 255),
+		sf::Color(236, 75, 25, 255),
+		sf::Color(226, 19, 19, 255),
+		sf::Color(255, 216, 216, 255)
+	};
 
 	// ~~~ External Variables
 	sf::RenderWindow* window;
 	sf::Clock* clock;
-	std::array<unsigned int, 2> size;
-	unsigned int mode;
+	std::array<int, 2> size;
+	int mode;
 	float outline;
 	std::vector<std::vector<bool>> fieldValues;
 
@@ -24,7 +34,7 @@ class render {
 	std::vector<std::string> textures;
 	sf::Texture currentTexture;
 	int texture = 0;
-	unsigned int waittime = 1000;
+	int waittime = 1000;
 	sf::Music music;
 	sf::Texture ricky;
 	sf::RectangleShape background;
@@ -34,7 +44,7 @@ class render {
 	// ~~~ Private Methods
 	void loadTextures();
 	void next();
-	bool elapsedTime(unsigned int milliseconds, sf::Time& time);
+	bool elapsedTime(int milliseconds, sf::Time& time);
 	void createBackground();
 	void createFields();
 	void updateFields();
@@ -43,6 +53,6 @@ public:
 	render(databomb data);
 	void draw();
 
-	std::array<unsigned int, 2> get_size();
+	std::array<int, 2> get_size();
 };
 

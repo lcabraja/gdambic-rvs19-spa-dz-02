@@ -1058,4 +1058,4 @@ resources/ricky/frames/1056.png
 resources/ricky/frames/1057.png
 resources/ricky/frames/1058.png
 resources/ricky/frames/1059.png
-resources/ricky/frames/1060.png/ricky
+resources/ricky/frames/1060.png

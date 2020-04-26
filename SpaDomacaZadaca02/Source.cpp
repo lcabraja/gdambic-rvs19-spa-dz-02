@@ -9,15 +9,15 @@ int main() {
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "Gle ti to sunce je izaslo...");
 	window.setFramerateLimit(60);
 	   
-	unsigned int input;
+	int input;
 	do {
-		std::cout << "Welcome, please choose a display mode:\n  1) Neighboring Colors\n  2) Grouping\n  3) Special Mode\n", std::cin >> input;
-		if (input < 1 || input > 3) input = 0;
+		std::cout << "Welcome, please choose a display mode:\n  1) Heatmap -- chooses pixel color based on number of neighbors\n  2) Grouping -- does its best to give neighboring pixels the same color\n  3) Special Mode\n  4) White Grid -- white on black\n  ", std::cin >> input;
+		if (input < 1 || input > 4) input = 0;
 	} while (!input);
 	
-	std::array<unsigned int, 2> size = { 100, 100 };
+	std::array<int, 2> size = { 100, 100 };
 	/*
-	unsigned int input, electricboogaloo;
+	int input, electricboogaloo;
 	do {
 		std::cout << "\n  1) Default Settings\n  2) Custom Settings", std::cin >> input;
 		if (input < 1 || input > 2) input = 0;
@@ -32,7 +32,7 @@ int main() {
 	data.clock = &clock;
 	data.mode = input;
 	data.size = size;
-	data.outline = 0.f;
+	data.outline = (input == 4 ? 0.5f : 0.f);
 	render frame(data);
 
 	while (window.isOpen()) {

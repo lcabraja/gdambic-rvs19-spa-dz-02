@@ -16,13 +16,12 @@ void render::loadTextures() {
 }
 
 void render::next() {
-	if (++texture >= textures.size())
-		texture = 0;
-
+	if (texture + 1 < textures.size())
+		texture++;
 	currentTexture.loadFromFile(textures[texture]);
 }
 
-bool render::elapsedTime(unsigned int milliseconds, sf::Time& time) {
+bool render::elapsedTime(int milliseconds, sf::Time& time) {
 	if ((clock->getElapsedTime().asMilliseconds() - time.asMilliseconds()) > milliseconds) {
 		time = clock->getElapsedTime();
 		return true;
@@ -76,6 +75,7 @@ void render::createFields()
 }
 
 void render::updateFields() {
+	
 	if (mode == 2) {
 		auto result = g->groups();
 		for (int i = 0; i < size[0]; i++)
@@ -89,12 +89,20 @@ void render::updateFields() {
 		}
 	}
 	else {
-		for (int i = 0; i < size[0]; i++)
-			for (int j = 0; j < size[1]; j++)
-				if (fieldValues[i][j])
-					field[i][j].setFillColor(sf::Color().White);
-				else
+		for (int i = 0; i < size[0]; i++) {
+			for (int j = 0; j < size[1]; j++) {
+				if (fieldValues[i][j]) {
+					if (mode == 1) {
+						std::array<int, 2> coords = { i, j };
+						field[i][j].setFillColor(gradient[g->countNeighbours(coords) - 1]);
+					} else {
+						field[i][j].setFillColor(sf::Color().White);
+					}
+				} else {
 					field[i][j].setFillColor(sf::Color().Transparent);
+				}
+			}
+		}
 	}
 }
 
@@ -140,6 +148,6 @@ void render::draw() {
 			window->draw(field[i][j]);
 }
 
-std::array<unsigned int, 2> render::get_size() {
+std::array<int, 2> render::get_size() {
 	return size;
 }

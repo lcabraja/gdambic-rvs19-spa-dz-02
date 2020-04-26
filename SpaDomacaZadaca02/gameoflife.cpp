@@ -2,7 +2,7 @@
 #include <ctime>
 #include "gameoflife.h"
 
-unsigned int gameoflife::countNeighbours(std::array<unsigned int, 2> coords)
+int gameoflife::countNeighbours(std::array<int, 2> coords)
 {
 	bool north;
 	bool northeast;
@@ -59,13 +59,13 @@ unsigned int gameoflife::countNeighbours(std::array<unsigned int, 2> coords)
 		+ (northwest ? 1 : 0);
 }
 
-std::vector<std::vector<std::array<unsigned int, 2>>> gameoflife::groups()
+std::vector<std::vector<std::array<int, 2>>> gameoflife::groups()
 {
 	resetCheckField();
 	for (int i = 0; i < size[0]; i++) {
 		for (int j = 0; j < size[1]; j++) {
 			if (field[i][j] && !checkedField[i][j]) {
-				std::array<unsigned int, 2> coords = { i, j };
+				std::array<int, 2> coords = { i, j };
 				checkedField[i][j] = true;
 				group.push_back(coords);
 				recursiveCheck(coords, 0);
@@ -93,7 +93,7 @@ bool gameoflife::random(float percentage) {
 	return false;
 }
 
-void gameoflife::recursiveCheck(std::array<unsigned int, 2> prevcoords, unsigned int direction) {
+void gameoflife::recursiveCheck(std::array<int, 2> prevcoords, int direction) {
 	bool north;
 	bool northeast;
 	bool east;
@@ -110,7 +110,7 @@ void gameoflife::recursiveCheck(std::array<unsigned int, 2> prevcoords, unsigned
 		north = field[x][y - 1];
 		if (north && !checkedField[x][y - 1]) {
 			checkedField[x][y - 1] = true;
-			std::array<unsigned int, 2> coords = { x, y - 1 };
+			std::array<int, 2> coords = { x, y - 1 };
 			group.push_back(coords);
 			recursiveCheck(coords, 3);
 		}
@@ -121,7 +121,7 @@ void gameoflife::recursiveCheck(std::array<unsigned int, 2> prevcoords, unsigned
 		northeast = field[x + 1][y - 1];
 		if (northeast && !checkedField[x + 1][y - 1]) {
 			checkedField[x + 1][y - 1] = true;
-			std::array<unsigned int, 2> coords = { x + 1, y - 1 };
+			std::array<int, 2> coords = { x + 1, y - 1 };
 			group.push_back(coords);
 			recursiveCheck(coords, 3);
 		}
@@ -132,7 +132,7 @@ void gameoflife::recursiveCheck(std::array<unsigned int, 2> prevcoords, unsigned
 		east = field[x + 1][y];
 		if (east && !checkedField[x + 1][y]) {
 			checkedField[x + 1][y] = true;
-			std::array<unsigned int, 2> coords = { x + 1, y };
+			std::array<int, 2> coords = { x + 1, y };
 			group.push_back(coords);
 			recursiveCheck(coords, 4);
 		}
@@ -143,7 +143,7 @@ void gameoflife::recursiveCheck(std::array<unsigned int, 2> prevcoords, unsigned
 		southeast = field[x + 1][y + 1];
 		if (southeast && !checkedField[x + 1][y + 1]) {
 			checkedField[x + 1][y + 1] = true;
-			std::array<unsigned int, 2> coords = { x + 1, y + 1 };
+			std::array<int, 2> coords = { x + 1, y + 1 };
 			group.push_back(coords);
 			recursiveCheck(coords, 4);
 		}
@@ -154,7 +154,7 @@ void gameoflife::recursiveCheck(std::array<unsigned int, 2> prevcoords, unsigned
 		south = field[x][y + 1];
 		if (south && !checkedField[x][y + 1]) {
 			checkedField[x][y + 1] = true;
-			std::array<unsigned int, 2> coords = { x, y + 1 };
+			std::array<int, 2> coords = { x, y + 1 };
 			group.push_back(coords);
 			recursiveCheck(coords, 1);
 		}
@@ -165,7 +165,7 @@ void gameoflife::recursiveCheck(std::array<unsigned int, 2> prevcoords, unsigned
 		southwest = field[x - 1][y + 1];
 		if (southwest && !checkedField[x - 1][y + 1]) {
 			checkedField[x - 1][y + 1] = true;
-			std::array<unsigned int, 2> coords = { x - 1, y + 1 };
+			std::array<int, 2> coords = { x - 1, y + 1 };
 			group.push_back(coords);
 			recursiveCheck(coords, 1);
 		}
@@ -176,7 +176,7 @@ void gameoflife::recursiveCheck(std::array<unsigned int, 2> prevcoords, unsigned
 		west = field[x - 1][y];
 		if (west && !checkedField[x - 1][y]) {
 			checkedField[x - 1][y] = true;
-			std::array<unsigned int, 2> coords = { x - 1, y };
+			std::array<int, 2> coords = { x - 1, y };
 			group.push_back(coords);
 			recursiveCheck(coords, 2);
 		}
@@ -187,7 +187,7 @@ void gameoflife::recursiveCheck(std::array<unsigned int, 2> prevcoords, unsigned
 		northwest = field[x - 1][y - 1];
 		if (northwest && !checkedField[x - 1][y - 1]) {
 			checkedField[x - 1][y - 1] = true;
-			std::array<unsigned int, 2> coords = { x - 1, y - 1 };
+			std::array<int, 2> coords = { x - 1, y - 1 };
 			group.push_back(coords);
 			recursiveCheck(coords, 2);
 		}
@@ -206,7 +206,7 @@ void gameoflife::resetCheckField() {
 	group.clear();
 }
 
-gameoflife::gameoflife(std::array<unsigned int, 2> size) {
+gameoflife::gameoflife(std::array<int, 2> size) {
 	this->size = size;
 	srand(time(nullptr));
 	randomizeField(0.25);
@@ -218,8 +218,8 @@ std::vector<std::vector<bool>> gameoflife::update() {
 		std::vector<bool> temp;
 		for (int j = 0; j < size[1]; j++) {
 			bool newvalue;
-			std::array<unsigned int, 2> coords = { i, j };
-			unsigned int neighbours = countNeighbours(coords);
+			std::array<int, 2> coords = { i, j };
+			int neighbours = countNeighbours(coords);
 			if (field[i][j]) {
 				switch (neighbours) {
 				case 0:
